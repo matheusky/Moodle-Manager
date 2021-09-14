@@ -1,0 +1,26 @@
+{
+  "name": "moodle-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusky/Moodle-Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusky/Moodle-Manager/issues"
+  },
+  "homepage": "https://github.com/matheusky/Moodle-Manager#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron": "^14.0.1"
+  }
+}
