@@ -1,0 +1,46 @@
+.tables {
+    width: 85%;
+    margin-bottom: 10%;
+}
+
+#userTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 10px;
+}
+
+#userTable td,th{
+    text-align: center;
+}
+
+#userTable td, #userTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#userTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#userTable tr:hover {
+    background-color: #ddd;
+}
+
+#userTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #045faa;
+    color: white;
+}
+
+#userTable button{
+    border: none;
+    font-size: 25px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.tb-input input{
+    padding: 5px;
+}

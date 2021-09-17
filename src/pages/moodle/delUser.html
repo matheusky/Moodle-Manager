@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../scripts/components.js"></script>
+    <script src="../../scripts/manageUsers.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/delUser.css">
     <title>Moodle Manager</title>
 </head>
 
 <body>
 
     <div class="topnav" id="myTopnav">
-        <a class="navbar-brand">Moodle Manager</a>
+        <a class="navbar-brand" href="../../pages/index.html">Moodle Manager</a>
+
+        <!-- Alun -->
         <div class="dropdown">
             <button class="dropbtn">Alunos
                 <i class="fa fa-caret-down"></i>
@@ -24,7 +29,7 @@
                 <a href="#">Consultar</a>
             </div>
         </div>
-
+        <!-- proff -->
         <div class="dropdown">
             <button class="dropbtn">Profesores
                 <i class="fa fa-caret-down"></i>
@@ -35,36 +40,40 @@
                 <a href="#">Consultar</a>
             </div>
         </div>
-
+        <!-- Moodle -->
         <div class="dropdown">
-            <button class="dropbtn">Moodle
+            <button class="dropbtn active">Moodle
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="./moodle/createUser.html">Criar Usuário</a>
-                <a href="#">Excluir Usuário</a>
-                <a href="#">Link 3</a>
+                <a href="./createUser.html">Criar Usuário</a>
+                <a href="./delUser.html">Excluir/Arquivar Usuário</a>
+                <a href="./config.html">Token</a>
             </div>
+
         </div>
         <a href="#about">About</a>
     </div>
 
     <div class="container">
-        <h2>Responsive Topnav with Dropdown</h2>
-        <p>Resize the browser window to see how it works.</p>
-        <p>Hover over the dropdown button to open the dropdown menu.</p>
+        <div class="tb-input">
+            <h2>Excluir/Arquivar usuários</h2>
+            <p>Digite Nome ou Email do usuário</p>
+            <input type="text" id="inputText">
+            <button type="submit" onclick="get()">Procurar</button>
+        </div>
+        <br>
+        <div class="tables">
+            <table id="userTable" style="display: none;">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Arquivar</th>
+                    <th>Excluir</th>
+                </tr>
+            </table>
+        </div>
     </div>
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
 </body>
 
 </html>

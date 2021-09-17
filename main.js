@@ -12,9 +12,10 @@ app.on('ready', () => {
     minWidth: 850,
     minHeight: 500,
     //icon:path.join(__dirname, 'src/img/icon.png'),
-    autoHideMenuBar:'true',
-    center:'true',
+    autoHideMenuBar: 'true',
+    center: 'true',
     webPreferences: {
+      contextIsolation: false,
       nodeIntegration: true,
       nativeWindowOpen: true
     }
@@ -29,8 +30,8 @@ app.on('ready', () => {
 
   // if main window is ready to show, then destroy the splash window and show up the main window
   mainWindow.webContents.once('dom-ready', () => {
-     //setTimeout(function(){splash.close()}, 1000);
-     mainWindow.show();
+    //setTimeout(function(){splash.close()}, 1000);
+    mainWindow.show();
   });
 });
 
