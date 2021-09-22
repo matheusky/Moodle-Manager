@@ -9,7 +9,7 @@
     <script src="../../scripts/manageUsers.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../styles/global.css">
-    <link rel="stylesheet" href="../../styles/delUser.css">
+    <link rel="stylesheet" href="../../styles/manageUsers.css">
     <title>Moodle Manager</title>
 </head>
 
@@ -47,30 +47,30 @@
             </button>
             <div class="dropdown-content">
                 <a href="./createUser.html">Criar Usuário</a>
-                <a href="./delUser.html">Excluir/Arquivar Usuário</a>
+                <a href="./manageUser.html">Excluir/Suspender Usuário</a>
                 <a href="./config.html">Token</a>
             </div>
 
         </div>
-        <a href="#about">About</a>
+        <a href="../about.html">About</a>
     </div>
 
     <div class="container">
         <div class="tb-input">
-            <h2>Excluir/Arquivar usuários</h2>
-            <p>Digite Nome ou Email do usuário</p>
-            <input type="text" id="inputText">
-            <button type="submit" onclick="get()">Procurar</button>
+            <h2>Excluir/Suspender usuários</h2>
+            <p>Digite o primeiro nome ou email do usuário</p>
+            <input type="text" id="inputText" placeholder="Buscar:">
+            <button onclick="userList()"><i class="fa fa-search"></i> Procurar</button>
+            <p>*Dica: deixe o campo vazio para buscar todos*</p>
         </div>
         <br>
+        <div id="loading">
+            <p>Carregando</p>
+            <div class="loader"></div>
+        </div>
         <div class="tables">
-            <table id="userTable" style="display: none;">
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Arquivar</th>
-                    <th>Excluir</th>
-                </tr>
+            <table id="userTable">
+                
             </table>
         </div>
     </div>

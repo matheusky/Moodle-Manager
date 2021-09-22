@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../scripts/components.js"></script>
-    <script src="../../scripts/config.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../styles/global.css">
     <title>Moodle Manager</title>
 </head>
 
 <body>
 
     <div class="topnav" id="myTopnav">
-        <a class="navbar-brand" href="../../pages/index.html">Moodle Manager</a>
-
-        <!-- Alun -->
+        <a class="navbar-brand" href="./index.html">Moodle Manager</a>
         <div class="dropdown">
             <button class="dropbtn">Alunos
                 <i class="fa fa-caret-down"></i>
@@ -28,7 +24,7 @@
                 <a href="#">Consultar</a>
             </div>
         </div>
-        <!-- proff -->
+
         <div class="dropdown">
             <button class="dropbtn">Profesores
                 <i class="fa fa-caret-down"></i>
@@ -39,34 +35,25 @@
                 <a href="#">Consultar</a>
             </div>
         </div>
-        <!-- Moodle -->
+
         <div class="dropdown">
-            <button class="dropbtn active">Moodle
+            <button class="dropbtn">Moodle
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="./createUser.html">Criar Usuário</a>
-                <a href="./manageUser.html">Excluir/Suspender Usuário</a>
-                <a href="./config.html">Token</a>
+                <a href="./moodle/createUser.html">Criar Usuário</a>
+                <a href="./moodle/manageUser.html">Excluir/Suspender Usuário</a>
+                <a href="./moodle/config.html">Token</a>
             </div>
-
         </div>
-        <a href="../about.html">About</a>
+        <a href="./about.html">About</a>
     </div>
 
     <div class="container">
-        <div class="tb-input">
-            <h2>Token de segurança</h2>
-            <p>Digite seu token para criar ou atualizar um existente</p>
-            <input type="text" id="inputText" placeholder="****************************">
-            <br>
-            <br>
-            <button onclick="saveTK()">Enviar</button>
-            <br>
-            <p>Token atual: <span id="tk" style="background-color: rgba(128, 128, 128, 0.37);"></span> <button id="tkbt" onclick="stk()"><i class="fa fa-eye"></i></button></p>
-        </div>
-        <br>
+        <h2>Moodle Manager</h2>
+        <p>W.I.P</p>
     </div>
+
 </body>
 
 </html>

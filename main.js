@@ -7,11 +7,11 @@ let mainWindow;
 app.on('ready', () => {
   // create main browser window
   mainWindow = new BrowserWindow({
-    width: 1050,
-    height: 650,
-    minWidth: 850,
-    minHeight: 500,
-    //icon:path.join(__dirname, 'src/img/icon.png'),
+    width: 1250,
+    height: 700,
+    minWidth: 1050,
+    minHeight: 650,
+    icon:path.join(__dirname, 'src/img/icon.png'),
     autoHideMenuBar: 'true',
     center: 'true',
     webPreferences: {

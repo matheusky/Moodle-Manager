@@ -48,20 +48,20 @@
             </button>
             <div class="dropdown-content">
                 <a href="./createUser.html">Criar Usuário</a>
-                <a href="./delUser.html">Excluir Usuário</a>
+                <a href="./manageUser.html">Excluir/Suspender Usuário</a>
                 <a href="./config.html">Token</a>
             </div>
 
         </div>
-        <a href="#about">About</a>
+        <a href="../about.html">About</a>
     </div>
 
     <div class="container">
         <div class="tb-input">
             <h2>Criar multiplos usuarios</h2>
             <p>Anexe planilhas em CSV/XLSX</p>
-            <input type="file" id="inputFile">
-            <button onclick="creatUser()">Carregar</button>
+            <input type="file" id="inputFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <button onclick="creatUser()">Carregar <i class="fa fa-upload"></i></button>
         </div>
         <br>
         <div class="consola">

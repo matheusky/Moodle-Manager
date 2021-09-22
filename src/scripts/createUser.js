@@ -2,11 +2,12 @@ async function creatUser() {
     clearConsole();
     const file = document.getElementById("inputFile").files[0];
     if (!file) {
-        setConsole("Erro! Anexe a planilha primeiro!")
-        return
-    }
+        setConsole("Erro! Anexe a planilha primeiro!");
+        return;
+    };
     setConsole("Iniciando...");
     var extension = file.name.split('.').pop();
+
     if (extension == "xlsx") {
         var workbook = XLSX.readFile(file.path);
         var sheet_name_list = workbook.SheetNames;
@@ -23,12 +24,12 @@ async function creatUser() {
 
         formData.append('moodlewsrestformat', 'json');
         formData.append('wsfunction', 'core_user_create_users');
-        formData.append('wstoken', '7182f13c6151097156f931d896b13706');
-        formData.append('users[0][username]', `${planilhaJson[i].email}`);
-        formData.append('users[0][password]', `${planilhaJson[i].password}`);
-        formData.append('users[0][firstname]', `${planilhaJson[i].firstname}`);
-        formData.append('users[0][lastname]', `${planilhaJson[i].lastname}`);
-        formData.append('users[0][email]', `${planilhaJson[i].email}`);
+        formData.append('wstoken', token);
+        formData.append('users[0][username]', planilhaJson[i].email);
+        formData.append('users[0][password]', planilhaJson[i].password);
+        formData.append('users[0][firstname]', planilhaJson[i].firstname);
+        formData.append('users[0][lastname]', planilhaJson[i].lastname);
+        formData.append('users[0][email]', planilhaJson[i].email);
         formData.append('users[0][preferences][0][type]', 'auth_forcepasswordchange');
         formData.append('users[0][preferences][0][value]', '1');
 
@@ -37,11 +38,11 @@ async function creatUser() {
         .then((response) => {
             if (response.data.debuginfo) {
                 setConsole(`Erro: ${response.data.debuginfo}`);
+                setConsole(`Progresso: ${i+1} de ${planilhaJson.length}`);
             } else {
-                setConsole(`Usuário ${response.data[0].username} foi criado!`)
+                setConsole(`Usuário ${response.data[0].username} foi criado!`);
+                setConsole(`Progresso: ${i+1} de ${planilhaJson.length}`);
             };
-        }).catch((error) => {
-            console.log(error);
         });
 
     };

@@ -10,7 +10,7 @@
     padding: 10px;
 }
 
-#userTable td,th{
+#userTable td, th {
     text-align: center;
 }
 
@@ -34,13 +34,34 @@
     color: white;
 }
 
-#userTable button{
+#userTable button {
     border: none;
     font-size: 25px;
     background-color: transparent;
     cursor: pointer;
 }
 
-.tb-input input{
-    padding: 5px;
+/* LOADING */
+
+#loading{
+    text-align: center;
+    display: none;
+}
+
+.loader {
+    border: 16px solid #b8b8b8;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
