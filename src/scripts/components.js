@@ -5,11 +5,12 @@ const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
 
-//---Read Token File---
+//---Read config File---
 const TOKEN_PATH = path.join(__dirname, "../../config/token.json");
 const rawdata = fs.readFileSync(TOKEN_PATH, 'utf8')
-const dataToken = JSON.parse(rawdata);
-const token = dataToken.token;
+const configData = JSON.parse(rawdata);
+const token = configData.token;
+const url = configData.url;
 //---------------------
 
 

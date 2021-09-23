@@ -1,3 +1,7 @@
+.tb-input select {
+    padding: 5px;
+}
+
 .tables {
     width: 85%;
     margin-bottom: 10%;

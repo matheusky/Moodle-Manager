@@ -11,20 +11,22 @@ async function userList() {
     //start formdata
     var formData = new URLSearchParams();
 
-    //select name/email
-    if (/\@/.test(search)) {
-        formData.append('criteria[0][key]', 'email');
+    //select id/name/email
+    var searchTYPE = document.getElementById('searchType').value;
+    formData.append('criteria[0][key]', searchTYPE);
+
+    if (searchTYPE == 'id') {
+        formData.append('criteria[0][value]', search);
     } else {
-        formData.append('criteria[0][key]', 'firstname');
+        formData.append('criteria[0][value]', `%${search}%`);
     };
 
     formData.append('moodlewsrestformat', 'json');
     formData.append('wsfunction', 'core_user_get_users');
     formData.append('wstoken', token);
-    formData.append('criteria[0][value]', `%${search}%`);
 
 
-    await axios.post('http://192.168.3.31/moodle/webservice/rest/server.php', formData)
+    await axios.post(url, formData)
         .then((response) => {
             //close load
             document.getElementById("loading").style.display = "none";
@@ -78,11 +80,11 @@ async function userArchive(params) {
     var formData = new URLSearchParams();
     formData.append('moodlewsrestformat', 'json');
     formData.append('wsfunction', 'core_user_update_users');
-    formData.append('wstoken', '7182f13c6151097156f931d896b13706');
+    formData.append('wstoken', token);
     formData.append('users[0][id]', params);
     formData.append('users[0][suspended]', "1");
 
-    await axios.post('http://192.168.3.31/moodle/webservice/rest/server.php', formData)
+    await axios.post(url, formData)
         .then((response) => {
             if (response.data == null) {
                 window.alert("Usuário Suspendido!");
@@ -100,11 +102,11 @@ async function userActive(params) {
     var formData = new URLSearchParams();
     formData.append('moodlewsrestformat', 'json');
     formData.append('wsfunction', 'core_user_update_users');
-    formData.append('wstoken', '7182f13c6151097156f931d896b13706');
+    formData.append('wstoken', token);
     formData.append('users[0][id]', params);
     formData.append('users[0][suspended]', "0");
 
-    await axios.post('http://192.168.3.31/moodle/webservice/rest/server.php', formData)
+    await axios.post(url, formData)
         .then((response) => {
             if (response.data == null) {
                 window.alert("Usuário Ativado!");
@@ -127,7 +129,7 @@ async function userDelete(params) {
         formData.append('wstoken', token);
         formData.append('userids[0]', params);
 
-        await axios.post('http://192.168.3.31/moodle/webservice/rest/server.php', formData)
+        await axios.post(url, formData)
             .then((response) => {
                 if (response.statusText == "OK") {
                     document.getElementById(params).remove();

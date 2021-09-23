@@ -34,7 +34,7 @@ async function creatUser() {
         formData.append('users[0][preferences][0][value]', '1');
 
 
-        await axios.post('http://192.168.3.31/moodle/webservice/rest/server.php', formData)
+        await axios.post(url, formData)
         .then((response) => {
             if (response.data.debuginfo) {
                 setConsole(`Erro: ${response.data.debuginfo}`);

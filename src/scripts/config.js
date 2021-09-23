@@ -10,19 +10,26 @@ function stk() {
 
 };
 
+
+function loadURL(paams) {
+  document.getElementById('inputURL').value = url;
+};
+
 function saveTK() {
-  var inputData = document.getElementById('inputText').value;
-  if (inputData.length <= 0) {
+  var inputToken = document.getElementById('inputToken').value;
+  var inputURL = document.getElementById('inputURL').value;
+  if (inputToken.length <= 0) {
     window.alert("Digite algo valido!");
     return
   };
   var token = {
-    token: inputData
+    token: inputToken,
+    url: inputURL
   };
 
   // Store the token to disk for later program executions
   fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
     if (err) return window.alert(err);
-    window.alert("Token salvo!");
+    window.alert("Configuração salva!");
   });
 };

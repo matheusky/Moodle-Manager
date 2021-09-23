@@ -48,7 +48,7 @@
             <div class="dropdown-content">
                 <a href="./createUser.html">Criar Usuário</a>
                 <a href="./manageUser.html">Excluir/Suspender Usuário</a>
-                <a href="./config.html">Token</a>
+                <a href="./config.html">Config</a>
             </div>
 
         </div>
@@ -59,9 +59,16 @@
         <div class="tb-input">
             <h2>Excluir/Suspender usuários</h2>
             <p>Digite o primeiro nome ou email do usuário</p>
+            <p>*Dica: deixe o campo vazio para buscar tudo*</p>
             <input type="text" id="inputText" placeholder="Buscar:">
+            <select id="searchType">
+                <option value="id">ID</option>
+                <option value="firstname" selected>Nome</option>
+                <option value="email">Email</option>
+            </select>
+            <br>
+            <br>
             <button onclick="userList()"><i class="fa fa-search"></i> Procurar</button>
-            <p>*Dica: deixe o campo vazio para buscar todos*</p>
         </div>
         <br>
         <div id="loading">
