@@ -1,4 +1,5 @@
 async function userList() {
+
     //clean search
     document.querySelector('#userTable').innerHTML = '';
 
@@ -16,21 +17,18 @@ async function userList() {
     formData.append('criteria[0][key]', searchTYPE);
 
     if (searchTYPE == 'id') {
-        formData.append('criteria[0][value]', search);
+        formData.append('criteria[0][value]', search);  //id
     } else {
-        formData.append('criteria[0][value]', `%${search}%`);
+        formData.append('criteria[0][value]', `%${search}%`); // search name/email
     };
 
-    formData.append('moodlewsrestformat', 'json');
-    formData.append('wsfunction', 'core_user_get_users');
-    formData.append('wstoken', token);
+    formData.append('moodlewsrestformat', 'json'); //format
+    formData.append('wsfunction', 'core_user_get_users'); //function api
+    formData.append('wstoken', token); //token
 
 
     await axios.post(url, formData)
         .then((response) => {
-            //close load
-            document.getElementById("loading").style.display = "none";
-
             //add search input
             document.querySelector('#userTable').insertAdjacentHTML('beforeend', `
             <input type="text" id="inputSearch" onkeyup="filterSearch()" placeholder="Pesquisa...">
@@ -50,9 +48,13 @@ async function userList() {
 
                 //add icon
                 if (response.data.users[i].suspended == true) {
-                    var icon = `<i class="fa fa-check-circle"></i>`;
+                    var icon = '<i class="fa fa-check-circle"></i>';
+                    var buttonA = `<button title="Ativar" onclick="userActive(${response.data.users[i].id})"><i class="fa fa-eye"></i></button>`;
+                    var buttonB = `<button disabled title="Suspender" onclick="userArchive(${response.data.users[i].id})"><i class="fa fa-eye-slash"></i></button>`;
                 } else {
-                    var icon = `<i class="fa fa-times-circle"></i>`;
+                    var icon = '<i class="fa fa-times-circle"></i>';
+                    var buttonA = `<button disabled title="Ativar" onclick="userActive(${response.data.users[i].id})"><i class="fa fa-eye"></i></button>`;
+                    var buttonB = `<button title="Suspender" onclick="userArchive(${response.data.users[i].id})"><i class="fa fa-eye-slash"></i></button>`;
                 };
 
                 //add data in table
@@ -63,16 +65,24 @@ async function userList() {
                     <td>${response.data.users[i].email}</td>
                     <td>${icon}</td>
                     <td>
-                    <button title="Ativar" onclick="userActive(${response.data.users[i].id})"><i class="fa fa-eye"></i></button>
-                    <button title="Suspender" onclick="userArchive(${response.data.users[i].id})"><i class="fa fa-eye-slash"></i></button>
+                    ${buttonA}
+                    ${buttonB}
                     <button title="Excluir" onclick="userDelete(${response.data.users[i].id})"><i class="fa fa-trash"></i></button>
                     </td>
                     </tr>`);
             };
+            
+            //close load
+            document.getElementById("loading").style.display = "none";
 
             //show table
             document.getElementById("userTable").style.display = 'table';
 
+        })
+        .catch((error) => {
+            //console.log(error);
+            document.getElementById("loading").style.display = "none";
+            createPopup('Erro de conecxao!', `${error}`, 5000);
         });
 };
 
@@ -87,12 +97,18 @@ async function userArchive(params) {
     await axios.post(url, formData)
         .then((response) => {
             if (response.data == null) {
-                window.alert("Usuário Suspendido!");
+                //window.alert("Usuário Suspendido!");
+                createPopup('Sucesso!', 'Usuário suspendido com sucesso!', 3000);
                 userList();
             } else {
-                window.alert(`${response.data.debuginfo}`);
+                //window.alert(`${response.data.debuginfo}`);
+                createPopup('Erro!', `${response.data.debuginfo}`, 3000);
             };
 
+        }).catch((error) => {
+            //console.log(error);
+            document.getElementById("loading").style.display = "none";
+            createPopup('Erro de conecxao!', `${error}`, 5000);
         });
 
 };
@@ -109,12 +125,18 @@ async function userActive(params) {
     await axios.post(url, formData)
         .then((response) => {
             if (response.data == null) {
-                window.alert("Usuário Ativado!");
+                //window.alert("Usuário Ativado!");
+                createPopup('Sucesso!', 'Usuário ativado com sucesso!', 3000);
                 userList();
             } else {
-                window.alert(`${response.data.debuginfo}`);
+                //window.alert(`${response.data.debuginfo}`);
+                createPopup('Erro!', `${response.data.debuginfo}`, 3000);
             };
 
+        }).catch((error) => {
+            console.log(error);
+            document.getElementById("loading").style.display = "none";
+            createPopup('Erro de conecxao!', `${error}`, 5000);
         });
 
 };
@@ -133,12 +155,18 @@ async function userDelete(params) {
             .then((response) => {
                 if (response.statusText == "OK") {
                     document.getElementById(params).remove();
-                    window.alert(`Usuário excluido!`);
+                    //window.alert(`Usuário excluido!`);
+                    createPopup('Sucesso!', 'Usuário excluido com sucesso!', 3000);
                     userList();
                 } else {
-                    window.alert(response.data.debuginfo);
+                    //window.alert(response.data.debuginfo);
+                    createPopup('Erro!', `${response.data.debuginfo}`, 3000);
                 };
 
+            }).catch((error) => {
+                console.log(error);
+                document.getElementById("loading").style.display = "none";
+                createPopup('Erro de conecxao!', `${error}`, 5000);
             });
     };
 };

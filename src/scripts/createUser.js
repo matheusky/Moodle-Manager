@@ -2,7 +2,7 @@ async function creatUser() {
     clearConsole();
     const file = document.getElementById("inputFile").files[0];
     if (!file) {
-        setConsole("Erro! Anexe a planilha primeiro!");
+        setConsole("Erro! Anexe uma planilha.");
         return;
     };
     setConsole("Iniciando...");
@@ -35,15 +35,14 @@ async function creatUser() {
 
 
         await axios.post(url, formData)
-        .then((response) => {
-            if (response.data.debuginfo) {
-                setConsole(`Erro: ${response.data.debuginfo}`);
-                setConsole(`Progresso: ${i+1} de ${planilhaJson.length}`);
-            } else {
-                setConsole(`Usuário ${response.data[0].username} foi criado!`);
-                setConsole(`Progresso: ${i+1} de ${planilhaJson.length}`);
-            };
-        });
-
+            .then((response) => {
+                if (response.data.debuginfo) {
+                    setConsole(`Erro: ${response.data.debuginfo}`);
+                    setConsole(`Progresso: ${i + 1} de ${planilhaJson.length}`);
+                } else {
+                    setConsole(`Usuário ${response.data[0].username} foi criado!`);
+                    setConsole(`Progresso: ${i + 1} de ${planilhaJson.length}`);
+                };
+            });
     };
 };

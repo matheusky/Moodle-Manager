@@ -11,6 +11,7 @@ const rawdata = fs.readFileSync(TOKEN_PATH, 'utf8')
 const configData = JSON.parse(rawdata);
 const token = configData.token;
 const url = configData.url;
+
 //---------------------
 
 
@@ -23,4 +24,16 @@ function setConsole(text) {
 function clearConsole() {
     document.getElementById("consol").value = '';
 };
-  //---------------------
+//---------------------
+
+//---create a css popup
+function createPopup(title, text, time) {
+    let popup = document.createElement('div');
+    popup.className = 'popup';
+    popup.innerHTML = '<h2>' + title + '</h2>' + '<p>' + text + '</p>';
+    document.body.appendChild(popup);
+    setTimeout(function () {
+        popup.remove();
+    }, time);
+};
+//---------------------
