@@ -23,8 +23,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="#">Atribuir</a>
-                <a href="#">Remover</a>
+                <a href="../student/manager.html">Atribuir/Remover</a>
                 <a href="#">Consultar</a>
             </div>
         </div>
@@ -34,8 +33,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="#">Atribuir</a>
-                <a href="#">Remover</a>
+                <a href="#">Atribuir/Remover</a>
                 <a href="#">Consultar</a>
             </div>
         </div>
@@ -49,7 +47,6 @@
                 <a href="./manageUser.html">Excluir/Suspender Usuário</a>
                 <a href="./config.html">Config</a>
             </div>
-
         </div>
         <a href="../about.html">About</a>
     </div>
@@ -64,11 +61,18 @@
             <input type="text" id="inputToken" placeholder="****************************">
             <br>
             <br>
-            <button onclick="saveTK()">Enviar</button>
+            <button onclick="saveTK()">Salvar</button>
             <br>
             <p>Token atual: <span id="tk" style="background-color: rgba(128, 128, 128, 0.37);"></span> <button id="tkbt" onclick="stk()"><i class="fa fa-eye"></i></button></p>
         </div>
         <br>
+        <div class="tb-input">
+            <h2>Testar conexão</h2>
+            <button onclick="checkC()">Testar</button>
+            <br>
+            <p>Status: <span id="stats">?</span></p>
+            
+        </div>
     </div>
 </body>
 

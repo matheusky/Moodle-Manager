@@ -1,0 +1,14 @@
+.exemples{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+}
+
+.exp{
+    text-align: center;
+}
+
+
+.exp img{
+    width: 20%;
+}
